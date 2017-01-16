@@ -1,0 +1,33 @@
+sudo: false
+language: cpp
+compiler:
+  - gcc
+  - clang
+os:
+  - linux
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - clang
+
+before install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_CXX_COMPILER=$COMPILER .. && make
+  - ./hw2_tests/00_basic_tests/00_runBasicHW2Tests
+  - ./hw2_tests/01_constructor_tests/01_runHW2ConstructorTest
+  - ./hw2_tests/02_push_to_stack_tests/02_runHW2PushToStackTests
+  - ./hw2_tests/03_pop_from_stack_tests/03_runHW2PopFromStackTests
+  - ./hw2_tests/04_peek_tests/04_runHW2PeekTests
+  - ./hw2_tests/05_empty_tests/05_runHW2IsEmptyTest
+  - ./hw2_tests/06_copy_constructor_test/06_runHW2CopyConstructorTest
+  - ./hw2_tests/07_get_pointer_to_tests/07_runHW2GetPointerToTests

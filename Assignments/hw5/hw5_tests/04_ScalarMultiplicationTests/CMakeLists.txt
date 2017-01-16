@@ -1,0 +1,4 @@
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+add_executable(04_runHW5ScalarMultiplicationTest scalar_multiplication_tests.cpp)
+target_link_libraries(04_runHW5ScalarMultiplicationTest gtest gtest_main hw5_library)

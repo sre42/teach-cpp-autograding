@@ -1,0 +1,9 @@
+project(hw6_tests)
+
+add_subdirectory(lib/gtest-1.7.0)
+add_subdirectory(00_basic_tests)
+add_subdirectory(01_hashed_entry_tests)
+add_subdirectory(02_hashed_dictionary_basicTests)
+add_subdirectory(03_hashed_dictionary_addTest)
+add_subdirectory(04_hashed_dictionary_removeTest)
+add_subdirectory(05_hashed_dictionary_miscTest)

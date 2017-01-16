@@ -1,0 +1,4 @@
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+add_executable(06_runHW2CopyConstructorTest copy_constructor_tests.cpp)
+target_link_libraries(06_runHW2CopyConstructorTest hw2_library gtest gtest_main)

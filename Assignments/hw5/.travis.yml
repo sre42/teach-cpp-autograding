@@ -1,0 +1,36 @@
+sudo: false
+language: cpp
+compiler:
+  - gcc
+  - clang
+os:
+  - linux
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - clang
+before install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+
+script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_CXX_COMPILER=$COMPILER .. && make
+  - ./hw5_tests/00_BasicTest/00_runHW5BasicTest
+  - ./hw5_tests/01_BasicConstructorTest/01_runHW5BasicConstructorTest
+  - ./hw5_tests/02_AdditionTests/02_runHW5AdditionTest
+  - ./hw5_tests/03_SubtractionTests/03_runHW5SubtractionTest
+  - ./hw5_tests/04_ScalarMultiplicationTests/04_runHW5ScalarMultiplicationTest
+  - ./hw5_tests/05_MatrixMultiplicationTests/05_runHW5MatrixMultiplicationTest
+  - ./hw5_tests/06_MatrixMultiplicationVariableSizesTests/06_runHW5MatrixMultiplicationSizeTest
+  - ./hw5_tests/07_BasicExceptionTest/07_runHW5BasicExceptionTest
+  - ./hw5_tests/08_AdditionExceptionTest/08_runHW5AdditionExceptionTest
+  - ./hw5_tests/09_SubtractionExceptionTest/09_runHW5SubtractionExceptionTest
+  - ./hw5_tests/10_MultiplicationExceptionTest/10_runHW5MutiplicationExceptionTest
+

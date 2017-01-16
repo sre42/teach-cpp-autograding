@@ -1,0 +1,9 @@
+project(hw1_tests)
+
+add_subdirectory(lib/gtest-1.7.0)
+add_subdirectory(basic_tests)
+add_subdirectory(00_triangle_basic_tests)
+add_subdirectory(01_valid_triangle_tests)
+add_subdirectory(03_triangle_area_tests)
+add_subdirectory(02_triangle_perimeter_tests)
+add_subdirectory(04_triangle_determining_tests)

@@ -1,0 +1,38 @@
+sudo: false
+language: cpp
+compiler:
+  - gcc
+  - clang
+os:
+  - linux
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - clang
+
+before install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_CXX_COMPILER=$COMPILER .. && make
+  - ./hw3_tests/00_basic_tests/00_runBasicHW3Tests
+  - ./hw3_tests/01_constructor_test/01_runHW3ConstructorTest
+  - ./hw3_tests/02_add_to_list_test/02_runHW3AddToListTest
+  - ./hw3_tests/03_remove_test/03_runHW3removeTest
+  - ./hw3_tests/04_is_empty_test/04_runHW3isEmptyTest
+  - ./hw3_tests/05_size_test/05_runHW3SizeTest
+  - ./hw3_tests/06_contains_test/06_runHW3ContainsTest
+  - ./hw3_tests/07_get_frequency_test/07_runHW3GetFrequencyTest
+  - ./hw3_tests/08_copy_constructor_test/08_runHW3CopyConstructorTest
+  - ./hw3_tests/09_head_ptr_test/09_runHW3HeadPointerTest
+  - ./hw3_tests/10_tail_ptr_test/10_runHW3TailPointerTest
+  - ./hw3_tests/11_mid_ptr_test/11_runHW3MidPointerTest
+
