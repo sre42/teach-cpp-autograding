@@ -1,9 +1,9 @@
-#HW1 First-Name Last-Name
+# HW1 First-Name Last-Name
 TODO - Update your name in this readme.
 
 TODO - Add a badge from travis CI here
 
-##Problem statement:
+## Problem statement:
 
 Design and implement an ADT that represents a triangle. The data for the ADT must include the three sides of the triangle. This data must be in the private section of the class that implements the ADT.
 
